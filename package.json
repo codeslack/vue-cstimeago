@@ -1,0 +1,25 @@
+{
+	"name": "vue-cs-timeago",
+	"version": "2.0.0",
+	"description": "vue js time ago",
+	"main": "./dist/index.js",
+	"author": "Md Ummar Ali",
+	"license": "MIT",
+	"keywords": [
+		"timeago",
+		"*** time ago"
+	],
+	"scripts": {
+		"dev": "vue serve test.vue",
+		"build": "bili --name index --plugin vue --vue.css false",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"files": [
+		"dist/*"
+	],
+	"devDependencies": {
+		"bili": "^4.9.0",
+		"rollup-plugin-vue": "^5.1.6",
+		"vue-template-compiler": "^2.6.11"
+	}
+}
