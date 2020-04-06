@@ -19,11 +19,16 @@ export default {
 				return new Date();
 			},
 		},
+		refresher: {
+			type: [Number, Boolean],
+			default: true,
+		},
 	},
 
 	data() {
 		return {
 			time_ago: "",
+			intVal: null,
 		};
 	},
 	methods: {
@@ -35,7 +40,17 @@ export default {
 	mounted() {
 		this.$nextTick(() => {
 			this.loadTimer();
+			if (this.refresher) {
+				this.refresher === true ? 60 : this.refresher;
+				this.intVal = setInterval(
+					this.loadTimer,
+					this.refresher * 1000
+				);
+			}
 		});
+	},
+	destroyed() {
+		if (this.intVal) clearInterval(this.intVal);
 	},
 };
 </script>

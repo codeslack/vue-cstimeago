@@ -115,11 +115,16 @@ var script = {
       "default": function _default() {
         return new Date();
       }
+    },
+    refresher: {
+      type: [Number, Boolean],
+      "default": true
     }
   },
   data: function data() {
     return {
-      time_ago: ""
+      time_ago: "",
+      intVal: null
     };
   },
   methods: {
@@ -133,7 +138,15 @@ var script = {
 
     this.$nextTick(function () {
       _this.loadTimer();
+
+      if (_this.refresher) {
+        _this.refresher === true ? 60 : _this.refresher;
+        _this.intVal = setInterval(_this.loadTimer, _this.refresher * 1000);
+      }
     });
+  },
+  destroyed: function destroyed() {
+    if (this.intVal) clearInterval(this.intVal);
   }
 };
 
